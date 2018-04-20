@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sécurité Android</string>
+    <string name="server_url_placeholder">URL du serveur</string>
+    <string name="btn_set_url_text">URL du serveur</string>
+</resources>
